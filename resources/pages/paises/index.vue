@@ -16,11 +16,9 @@
 
 							<v-card-text>
 								<v-layout>
-								
-										<v-flex xs12 sm6 md3>
-											<v-text-field v-model="item_model.nombre" label="Nombre" autofocus clearable></v-text-field>
-										</v-flex>
-								
+									<v-flex>
+										<v-text-field v-model="item_model.nombre" label="Nombre" autofocus clearable></v-text-field>
+									</v-flex>
 								</v-layout>
 							</v-card-text>
 
@@ -31,6 +29,7 @@
 									<v-btn color="primary" @click="form_dialog = true">Save</v-btn>
 								</v-layout>
 							</v-card-actions>
+							
 						</v-card>
 					</v-dialog>
 			</v-toolbar>

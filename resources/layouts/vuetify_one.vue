@@ -4,60 +4,25 @@
     <!-- NAVIGATION-DRAWER-START -->
         <v-navigation-drawer :clipped="$vuetify.breakpoint.lgAndUp" v-model="drawer" fixed app >
             <v-list dense>
-                <template v-for="item in items">
-                    
-                    <!-- DRAWER-ITEM-HEADING-START -->
-                        <v-layout v-if="item.heading" :key="item.heading" row align-center>
-                            <v-flex xs6>
-                                <v-subheader v-if="item.heading">
-                                    {{ item.heading }}
-                                </v-subheader>
-                            </v-flex>
-                            <v-flex xs6 class="text-xs-center">
-                                <a href="#!" class="body-2 black--text">EDIT</a>
-                            </v-flex>
-                        </v-layout>
-                    <!-- DRAWER-ITEM-HEADING-END -->
+                <!-- DRAWER-ITEM-SIMPLE-START -->
+                    <v-list-tile>
+                        <v-subheader>
+                            FORMULARIOS
+                        </v-subheader>
+                    </v-list-tile>
 
-                    <!-- DRAWER-ITEM-WITH-CHILD-START -->
-                        <v-list-group v-else-if="item.children" v-model="item.model" :key="item.text" :prepend-icon="item.model ? item.icon : item['icon-alt']" append-icon="">
-                            <v-list-tile slot="activator">
-                                <v-list-tile-content>
-                                    <v-list-tile-title>
-                                        {{ item.text }}
-                                    </v-list-tile-title>
-                                </v-list-tile-content>
-                            </v-list-tile>
-                            <v-list-tile v-for="(child, i) in item.children" :key="i">
-                                <v-list-tile-action v-if="child.icon">
-                                    <v-icon>{{ child.icon }}</v-icon>
-                                </v-list-tile-action>
-                                <v-list-tile-content>
-                                    <v-list-tile-title>
-                                        {{ child.text }}
-                                    </v-list-tile-title>
-                                </v-list-tile-content>
-                            </v-list-tile>
-                        </v-list-group>
-                    <!-- DRAWER-ITEM-WITH-CHILD-END -->
+                    <v-list-tile :to="this.$custom_routes.frontend['paises_index']">
 
-                    <!-- DRAWER-ITEM-SIMPLE-START -->
-
-                        <v-list-tile v-else :key="item.text" :to="item.route">
-
-                            <v-list-tile-action>
-                                <v-icon>{{ item.icon }}</v-icon>
-                            </v-list-tile-action>
-                            <v-list-tile-content>
-                                <v-list-tile-title v-html="item.text">
-                                </v-list-tile-title>
-                            </v-list-tile-content>
-                                
-                        </v-list-tile>
-              
-                    <!-- DRAWER-ITEM-SIMPLE-END -->
-
-                </template>
+                        <v-list-tile-action>
+                            <v-icon>flag</v-icon>
+                        </v-list-tile-action>
+                        <v-list-tile-content>
+                            <v-list-tile-title> Paises </v-list-tile-title>
+                        </v-list-tile-content>
+                            
+                    </v-list-tile>
+            
+                <!-- DRAWER-ITEM-SIMPLE-END -->
             </v-list>
         </v-navigation-drawer>
     <!-- NAVIGATION-DRAWER-END -->
@@ -121,51 +86,20 @@
 </template>
 
 <script>
+    
     export default 
     {
+        computed:
+        {
+            routes: () => this.$custom_routes
+        },
         data: () => 
         ({
             title: { content: '<b>App Title</b>', route: '/' },
             user_signed_in: false,
             current_user: {},
-            dialog: false,
-            drawer: null,
-            items: 
-            [
-                { icon: 'flag', text: 'Paises', route: '/paises' },
-                { icon: 'history', text: 'Frequently contacted' },
-                { icon: 'content_copy', text: 'Duplicates' },
-                { icon: 'keyboard_arrow_up', 'icon-alt': 'keyboard_arrow_down', text: 'Labels', model: true,
-                    children: 
-                    [
-                        { icon: 'add', text: 'Create label' }
-                    ]
-                },
-                { icon: 'keyboard_arrow_up', 'icon-alt': 'keyboard_arrow_down', text: 'More', model: false,
-                    children: 
-                    [
-                        { text: 'Import' },
-                        { text: 'Export' },
-                        { text: 'Print' },
-                        { text: 'Undo changes' },
-                        { text: 'Other contacts' }
-                    ]
-                },
-                { icon: 'settings', text: 'Settings' },
-                { icon: 'chat_bubble', text: 'Send feedback' },
-                { icon: 'help', text: 'Help' },
-                { icon: 'phonelink', text: 'App downloads' },
-                { icon: 'keyboard', text: 'Go to the old version' }
-            ]
-        }),
-        methods:
-        {
-            
-        },
-        props: 
-        {
-            source: String
-        }
+            drawer: true
+        })
         //,router
     }
 </script>
