@@ -1,0 +1,15 @@
+{
+    "compilerOptions": 
+    {
+        "target": "ES3",
+        "module": "commonjs",
+        "noImplicitAny": true,
+        "removeComments": true,
+        "preserveConstEnums": true,
+        "sourceMap": false
+    },
+    "vscode" : 
+    {
+        "rewriteTsconfig" : true
+    }
+}

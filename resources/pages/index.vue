@@ -1,6 +1,6 @@
 <template>
   <v-layout justify-center align-center>
-    <h3>WELCOME</h3>
+    <h3>{{this.$lang('welcome')}}</h3>
   </v-layout>
 </template>
 

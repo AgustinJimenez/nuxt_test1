@@ -7,17 +7,17 @@
                 <!-- DRAWER-ITEM-SIMPLE-START -->
                     <v-list-tile>
                         <v-subheader>
-                            FORMULARIOS
+                            {{ this.$lang("forms").toUpperCase() }}
                         </v-subheader>
                     </v-list-tile>
 
-                    <v-list-tile :to="this.$custom_routes.frontend['paises_index']">
+                    <v-list-tile :to="this.$get_custom_route('countries_index')">
 
                         <v-list-tile-action>
                             <v-icon>flag</v-icon>
                         </v-list-tile-action>
                         <v-list-tile-content>
-                            <v-list-tile-title> Paises </v-list-tile-title>
+                            <v-list-tile-title> {{ this.$lang("contries") }} </v-list-tile-title>
                         </v-list-tile-content>
                             
                     </v-list-tile>
@@ -48,7 +48,7 @@
                     </v-btn>
                 
                     <v-list>
-                        <v-list-tile @click="">
+                        <v-list-tile to="/oto">
                             <v-list-tile-content>
                                 <v-list-tile-title>ACCOUNT</v-list-tile-title>
                             </v-list-tile-content>
@@ -56,7 +56,8 @@
                                 <v-icon>account_circle</v-icon>
                             </v-list-tile-action>
                         </v-list-tile>
-                        <v-list-tile @click="">
+
+                        <v-list-tile to="/oto">
                             <v-list-tile-content>
                                 <v-list-tile-title>LOGOUT</v-list-tile-title>
                             </v-list-tile-content>
@@ -64,6 +65,7 @@
                                 <v-icon>power_settings_new</v-icon>
                             </v-list-tile-action>
                         </v-list-tile>
+
                     </v-list>
                 </v-menu>
             </v-toolbar-items>
@@ -74,10 +76,18 @@
 
     <!-- CONTENT-START -->
     <v-content>
-      <v-container fluid fill-height>
-        <v-layout justify-center align-center>
-            <nuxt/>
-        </v-layout>
+        <v-container>
+            <v-layout wrap>
+
+                <v-flex>
+                    <v-alert :value="alert.is_visible" :type="alert.type" dismissible>{{ alert.message }}</v-alert>
+                </v-flex>
+
+                <v-flex xs12>
+                    <nuxt/>
+                </v-flex>
+                
+            </v-layout>
       </v-container>
     </v-content>
     <!-- CONTENT-END -->
@@ -89,17 +99,44 @@
     
     export default 
     {
-        computed:
+        mounted()
         {
-            routes: () => this.$custom_routes
+            console.log( this );
         },
         data: () => 
         ({
             title: { content: '<b>App Title</b>', route: '/' },
             user_signed_in: false,
             current_user: {},
-            drawer: true
-        })
-        //,router
+            drawer: true,
+            alert:
+            {
+                is_visible: false,
+                type: 'error',//success info warning error
+                message: 'Hello World.'
+            }
+        }),
+        methods: 
+        {
+            show_alert: function(message, type)
+            {
+                type = (type!=undefined) ? type : 'info' ;
+                alert.message = message;
+                alert.is_visible = true;
+            }
+            /*
+            http: function(url, options)
+            {
+                this.$axios.request()
+                .then( response => 
+                {
+                    console.log(response.data );
+                })
+                .catch(error => console.log(error));
+                
+            }
+            */
+        }
+
     }
 </script>

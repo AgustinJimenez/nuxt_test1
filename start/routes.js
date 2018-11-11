@@ -16,3 +16,4 @@
 const Route = use('Route')
 
 Route.any('*', 'NuxtController.render')
+Route.get('tmp', 'TmpController.test')

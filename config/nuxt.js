@@ -39,7 +39,8 @@ module.exports = {
   */
   plugins: [
     '@/plugins/vuetify',
-    '~/plugins/frontend_routes'
+    '~/plugins/language',
+    '~/plugins/routes'
   ],
 
   /*
