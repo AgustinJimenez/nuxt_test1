@@ -79,8 +79,17 @@
         <v-container>
             <v-layout wrap>
 
-                <v-flex>
-                    <v-alert :value="alert.is_visible" :type="alert.type" dismissible>{{ alert.message }}</v-alert>
+                <v-flex v-if="alert.is_visible">
+                    <v-alert :value="true" :type="alert.type" transition="scale-transition">
+                        <v-list-tile>
+                            <v-list-tile-content>
+                                <v-list-tile-title>{{ alert.message }}</v-list-tile-title>
+                            </v-list-tile-content>
+                            <v-list-tile-action>
+                                <v-icon>power_settings_new</v-icon>
+                            </v-list-tile-action>
+                        </v-list-tile>
+                    </v-alert>
                 </v-flex>
 
                 <v-flex xs12>
@@ -102,28 +111,23 @@
         mounted()
         {
             console.log( this );
+            
+            this.showSuccessMsg();
+        },
+        computed: 
+        {
+            alert(){return this.$store.state.alert;}
         },
         data: () => 
         ({
             title: { content: '<b>App Title</b>', route: '/' },
             user_signed_in: false,
             current_user: {},
-            drawer: true,
-            alert:
-            {
-                is_visible: false,
-                type: 'error',//success info warning error
-                message: 'Hello World.'
-            }
+            drawer: true
         }),
         methods: 
         {
-            show_alert: function(message, type)
-            {
-                type = (type!=undefined) ? type : 'info' ;
-                alert.message = message;
-                alert.is_visible = true;
-            }
+            
             /*
             http: function(url, options)
             {

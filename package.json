@@ -11,8 +11,6 @@
     "start": "cross-env NODE_ENV=production node server.js"
   },
   "dependencies": {
-    "cross-env": "^5.2.0",
-    "nuxt": "^2.0.0",
     "@adonisjs/ace": "^4.0.7",
     "@adonisjs/auth": "^2.0.10",
     "@adonisjs/bodyparser": "^1.0.8",
@@ -23,8 +21,12 @@
     "@adonisjs/lucid": "^4.0.22",
     "@adonisjs/session": "^1.0.19",
     "@adonisjs/shield": "^1.0.4",
-    "vuetify": "^1.2.4",
-    "@nuxtjs/axios": "^5.0.0"
+    "@nuxtjs/axios": "^5.0.0",
+    "cross-env": "^5.2.0",
+    "mini-toastr": "^0.8.1",
+    "nuxt": "^2.0.0",
+    "vue-notifications": "^0.9.0",
+    "vuetify": "^1.2.4"
   },
   "devDependencies": {
     "nodemon": "^1.11.0",

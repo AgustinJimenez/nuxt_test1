@@ -39,8 +39,10 @@ module.exports = {
   */
   plugins: [
     '@/plugins/vuetify',
+    '@/plugins/vue-notifications',
     '~/plugins/language',
     '~/plugins/routes'
+    
   ],
 
   /*

@@ -87,7 +87,8 @@
 		},
 		save_form() 
 		{
-			console.log( this );
+			this.$store.commit('alert/show_message', {message:"Saving data to adonis js"} )
+			console.log( this.$store.state );
 			//this.$parent.show_alert("Saving data to adonis js");
 			
 
