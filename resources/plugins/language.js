@@ -32,6 +32,9 @@ export default ({ app }, inject) =>
             "contry_form": 
                 { "en": "country form", "es": "Formulario de Pais" },
 
+            "contry_form_saved": 
+                { "en": "country saved correctly.", "es": "Pais guardado correctamente" },
+
             "name":
                 { "en": "name", "es": "nombre"},
 

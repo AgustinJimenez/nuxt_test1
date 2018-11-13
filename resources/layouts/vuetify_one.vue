@@ -11,7 +11,7 @@
                         </v-subheader>
                     </v-list-tile>
 
-                    <v-list-tile :to="this.$get_custom_route('countries_index')">
+                    <v-list-tile :to="this.$get_custom_route('system.countries')">
 
                         <v-list-tile-action>
                             <v-icon>flag</v-icon>
@@ -32,7 +32,7 @@
         <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
 
         <v-toolbar-title>
-            <nuxt-link v-html="title.content" :to="title.route" class="white--text"></nuxt-link>
+            <nuxt-link v-html="title.content" :to="this.$get_custom_route('system')" class="white--text"></nuxt-link>
         </v-toolbar-title>
 
         <v-spacer></v-spacer>
@@ -79,19 +79,6 @@
         <v-container>
             <v-layout wrap>
 
-                <v-flex v-if="alert.is_visible">
-                    <v-alert :value="true" :type="alert.type" transition="scale-transition">
-                        <v-list-tile>
-                            <v-list-tile-content>
-                                <v-list-tile-title>{{ alert.message }}</v-list-tile-title>
-                            </v-list-tile-content>
-                            <v-list-tile-action>
-                                <v-icon>power_settings_new</v-icon>
-                            </v-list-tile-action>
-                        </v-list-tile>
-                    </v-alert>
-                </v-flex>
-
                 <v-flex xs12>
                     <nuxt/>
                 </v-flex>
@@ -110,36 +97,18 @@
     {
         mounted()
         {
-            console.log( this );
-            
-            this.showSuccessMsg();
-        },
-        computed: 
-        {
-            alert(){return this.$store.state.alert;}
+            //console.log( this );
         },
         data: () => 
         ({
-            title: { content: '<b>App Title</b>', route: '/' },
+            title: { content: '<b>App Title</b>' },
             user_signed_in: false,
             current_user: {},
             drawer: true
         }),
         methods: 
         {
-            
-            /*
-            http: function(url, options)
-            {
-                this.$axios.request()
-                .then( response => 
-                {
-                    console.log(response.data );
-                })
-                .catch(error => console.log(error));
-                
-            }
-            */
+
         }
 
     }

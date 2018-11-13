@@ -1,6 +1,8 @@
 const pkg = require('../package')
 const resolve = require('path').resolve
 
+const Env = use('Env')
+
 module.exports = {
   mode: 'universal',
 
@@ -37,11 +39,12 @@ module.exports = {
   /*
   ** Plugins to load before mounting the App
   */
-  plugins: [
+  plugins: 
+  [
     '@/plugins/vuetify',
-    '@/plugins/vue-notifications',
     '~/plugins/language',
-    '~/plugins/routes'
+    '~/plugins/frontend_routes',
+    '~/plugins/axios_extends'
     
   ],
 
@@ -51,14 +54,29 @@ module.exports = {
   modules: 
   [
     // Doc: https://github.com/nuxt-community/axios-module#usage
-    '@nuxtjs/axios'
+    '@nuxtjs/axios',
+    '@nuxtjs/toast'
     
   ],
   /*
   ** Axios module configuration
   */
-  axios: {
+  axios: 
+  {
     // See https://github.com/nuxt-community/axios-module#options
+    debug: (Env.get('NODE_ENV') == 'development')
+  },
+
+  /*
+  ** Toast module configuration
+  */
+ 
+  toast: 
+  {
+    position: 'top-right',
+    type: 'info',
+    Icon: 'info',
+    duration: 10000
   },
 
   /*

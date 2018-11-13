@@ -6,5 +6,6 @@
 
 <script>
   export default {
+    layout: 'vuetify_one'
   }
 </script>

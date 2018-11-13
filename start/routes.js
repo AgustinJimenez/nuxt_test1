@@ -14,6 +14,18 @@
 */
 
 const Route = use('Route')
-
 Route.any('*', 'NuxtController.render')
-Route.get('tmp', 'TmpController.test')
+
+//Route.get('/countries', 'CountriesController.index');
+
+Route.group(() => 
+{
+
+    Route.resource('/countries', 'Backend/CountriesController')/*.apiOnly()*/;
+
+})
+//.namespace('Backend')
+//.formats(['json'], true)
+//.middleware(['auth'])
+.prefix('backend');
+

@@ -87,14 +87,22 @@
 		},
 		save_form() 
 		{
-			this.$store.commit('alert/show_message', {message:"Saving data to adonis js"} )
-			console.log( this.$store.state );
+			//this.$store.commit('alert/show_message', {message:"Saving data to adonis js"} )
+			//console.log( this.$store.state );
 			//this.$parent.show_alert("Saving data to adonis js");
-			
 
 			if( this.$refs.form.validate() )
 			{
-				console.log( 'IS VALID' );
+				
+				this.$axios.post("/backend/countries", this.form.item)
+				.then( response => 
+				{
+					this.$toast.show( this.$lang("contry_form_saved") );
+					console.log( response );
+				});
+				
+					
+				
 			}
 			else
 				console.log( 'IS NO VALID' );
